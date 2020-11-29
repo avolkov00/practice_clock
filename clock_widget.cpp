@@ -32,9 +32,7 @@ void Clock::timerEvent(QTimerEvent*)
 
 void drawArrow(QPainter& p)
 {
-	p.drawLine(0,0,  0,10);
-	p.drawLine(0,10,-3, 7);
-	p.drawLine(0,10, 3, 7);
+    p.drawLine(0,0,  0,10);
 }
 
 void Clock::paintEvent(QPaintEvent*)
@@ -43,29 +41,28 @@ void Clock::paintEvent(QPaintEvent*)
 	QPoint center(width()/2, height()/2);
 	p.translate(center);
 
-/* Не очень красиво получилось - требуется другое решение
-	// hours
-	p.save();
-	p.rotate( 180 + _hours * 30);
-	p.scale(7,7);
-	p.setPen(Qt::red);
-	drawArrow(p);
-	p.restore();
 
+    // hours
+    p.save();
+    p.rotate(180 + _hours * 30);
+    p.scale(7,10);
+    p.setPen(Qt::black);
+    drawArrow(p);
+    p.restore();
   // minutes
-	p.save();
-	p.rotate( 180 + _minutes * 6);
-	p.scale(18,18);
-	p.setPen(Qt::green);
-	drawArrow(p);
-	p.restore();
-*/
+    p.save();
+    p.rotate( 180 + _minutes * 6);
+    p.scale(4.5,18);
+    //p.setPen(Qt::green);
+    drawArrow(p);
+    p.restore();
+
   // seconds
-	p.save();
-	p.rotate( 180 + _seconds * 6);
-	p.scale(20,20);
-	p.setPen(Qt::blue);
-	drawArrow(p);
-	p.restore();
+    p.save();
+    p.rotate( 180 + _seconds * 6);
+    p.scale(3,20);
+    //p.setPen(Qt::blue);
+    drawArrow(p);
+    p.restore();
 }
 
