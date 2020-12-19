@@ -40,7 +40,26 @@ void Clock::paintEvent(QPaintEvent*)
 	QPainter p(this);
 	QPoint center(width()/2, height()/2);
 	p.translate(center);
-
+    QPainter h(this);
+    h.drawEllipse(width()/2-220, height()/2-220,440,440);
+    for(int i = 0;i < 12;i++){
+        p.save();
+        p.rotate(180+i*30);
+        p.drawLine(0, 210,0,225);
+        p.restore();
+    }
+    for(int i = 0;i<12;i++){
+        p.save();
+        p.rotate(180+(i+1)*30);
+        if((i+1)*5 == 60)
+        {
+             p.drawText(-6,207,"0");
+        }
+        else
+            p.drawText(-6,207,QString::number(((i+1)*5)));
+        p.drawText(-6,195,QString::number(i+1));
+        p.restore();
+    }
 
     // hours
     p.save();
